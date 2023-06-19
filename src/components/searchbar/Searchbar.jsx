@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { styled, } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import { search_place } from '../../services/api/geoData';
 import useDebounce from '../../hooks/useDebounce/useDebounce';
 import { useQuery } from 'react-query';
@@ -83,7 +82,6 @@ export default function Searchbar({ setOpen, map,setLng,setLat  }) {
     return (
         <Search>
             <SearchIconWrapper>
-                <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
                 placeholder="Search…"
