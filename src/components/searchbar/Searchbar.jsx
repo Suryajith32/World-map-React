@@ -4,6 +4,7 @@ import InputBase from '@mui/material/InputBase';
 import { search_place } from '../../services/api/geoData';
 import useDebounce from '../../hooks/useDebounce/useDebounce';
 import { useQuery } from 'react-query';
+import { Box } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -80,6 +81,7 @@ export default function Searchbar({ setOpen, map,setLng,setLat  }) {
     }
 
     return (
+        <Box sx={{mt:{md:0,xs:10}}}>
         <Search>
             <SearchIconWrapper>
             </SearchIconWrapper>
@@ -89,5 +91,6 @@ export default function Searchbar({ setOpen, map,setLng,setLat  }) {
                 value={inputText} onChange={handleInputChange}
             />
         </Search>
+        </Box>
     );
 }

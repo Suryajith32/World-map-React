@@ -31,7 +31,7 @@ const MapComponent = () => {
 
         
         // TO GET THE CURRENT CORDINATES AS CURSOR MOVES //
-
+ 
         if (!map.current) return; // wait for map to initialize
         map.current.on('move', () => {
             setLng(map.current.getCenter().lng.toFixed(4));
