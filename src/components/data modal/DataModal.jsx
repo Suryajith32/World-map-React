@@ -18,7 +18,7 @@ export default function BasicModal({ open, handleClickCordinate,data }) {
             >
                 <Box display='flex' justifyContent='center' alignItems='center'
                     sx={{
-                        width: '50em', height: '70vh', position: 'absolute',
+                        width:{ md:'50em',xs:'100%'}, height: '70vh', position: 'absolute',
                         color: '#FFFFFF', fontFamily: 'monospace',
                         zIndex: 1, top: '100px', left: 0, m: '12px', borderRadius: '4px'
                     }}>

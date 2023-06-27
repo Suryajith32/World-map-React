@@ -45,6 +45,7 @@ const MapComponent = () => {
     const handleClickCordinate = async () => {
         setOpen(!open)
         handleClick()
+       kr  
     }
 
     // REACT QUERY FUNCTION FOR FETCHING THE GEOCODING DATA //
@@ -57,7 +58,9 @@ const MapComponent = () => {
     return (
         <div>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', width: '100%', color: '#FFFFFF', top: 10 }}>
+                <Box>
                 <Searchbar setOpen={setOpen} map={map} setLng={setLng} setLat={setLat}/>
+                </Box>
             </Box>
             <Box onClick={() => handleClickCordinate()} sx={{ width: '100%', height: '100vh' }} ref={mapContainer}>
                 <Sidebar lat={lat} lng={lng} />

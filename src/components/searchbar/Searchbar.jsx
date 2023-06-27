@@ -17,7 +17,7 @@ const Search = styled('div')(({ theme }) => ({
     // width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
-        width: 'auto',
+        width: '100%',
     },
 }));
 
@@ -81,7 +81,7 @@ export default function Searchbar({ setOpen, map,setLng,setLat  }) {
     }
 
     return (
-        <Box sx={{mt:{md:0,xs:10}}}>
+        <Box sx={{mt:{md:0,xs:10,width:'100%'}}}>
         <Search>
             <SearchIconWrapper>
             </SearchIconWrapper>
