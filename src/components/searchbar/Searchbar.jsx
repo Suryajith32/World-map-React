@@ -5,6 +5,10 @@ import { search_place } from '../../services/api/geoData';
 import useDebounce from '../../hooks/useDebounce/useDebounce';
 import { useQuery } from 'react-query';
 import { Box } from '@mui/material';
+import SuggestionModal from './suggestionModal/SuggestionModal';
+import { useSelector } from 'react-redux';
+
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -51,9 +55,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function Searchbar({ setOpen, map,setLng,setLat  }) {
+export default function Searchbar({ setOpen, map, setLng, setLat }) {
+    const latlongData = useSelector((state) => state.cordData.value.selectedSuggetionCordinate)
     const [inputText, setInputText] = React.useState('');
     const debouncedValue = useDebounce(inputText, 500)
+    console.log(latlongData,'latlongData fron selector')
 
     // FUNCTION TO HANDLE INPUT CHANGE //
 
@@ -66,31 +72,22 @@ export default function Searchbar({ setOpen, map,setLng,setLat  }) {
     const { data: searchResult } = useQuery(["searchUserValues", debouncedValue], () =>
         search_place(debouncedValue)
     )
-    if (searchResult?.results[0]) {
-
-        // Fly the map to the desired coordinates
-        setLng(searchResult?.results[0]?.lon.toFixed(4))
-        setLat(searchResult?.results[0]?.lat.toFixed(4))
-        map.current.flyTo({
-            center: [searchResult?.results[0]?.lon.toFixed(4), searchResult?.results[0]?.lat.toFixed(4)], // Desired coordinates
-            zoom: 15, // Desired zoom level
-            speed: 5, // Speed of the fly animation
-            curve: 1, // How the fly animation behaves
-            essential: true, // Indicates the animation is essential
-        });
-    }
+    console.log(searchResult, 'searchresults')
 
     return (
-        <Box sx={{mt:{md:0,xs:10,width:'100%'}}}>
-        <Search>
-            <SearchIconWrapper>
-            </SearchIconWrapper>
-            <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                value={inputText} onChange={handleInputChange}
-            />
-        </Search>
+        <Box sx={{ mt: { md: 0, xs: 10, width: '100%' } }}>
+            <Search>
+                <SearchIconWrapper>
+                </SearchIconWrapper>
+                <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                    value={inputText} onChange={handleInputChange}
+                />
+            </Search>
+
+            {/* SEARCH SUGGESTION DISPLAY MODAL */}
+            {searchResult ? <SuggestionModal searchResult={searchResult} map={map} /> : ''}
         </Box>
     );
 }

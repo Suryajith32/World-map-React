@@ -20,7 +20,7 @@ export default function BasicModal({ open, handleClickCordinate,data }) {
                     sx={{
                         width:{ md:'50em',xs:'100%'}, height: '70vh', position: 'absolute',
                         color: '#FFFFFF', fontFamily: 'monospace',
-                        zIndex: 1, top: '100px', left: 0, m: '12px', borderRadius: '4px'
+                        zIndex: 1, top: '100px', left: 0, borderRadius: '4px',
                     }}>
                     <Stack direction='column' spacing={5}>
                         {data && data?.map((item, index) => (
