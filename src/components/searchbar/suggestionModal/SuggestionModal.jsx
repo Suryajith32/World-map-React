@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from '@mui/material'
-import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import React from 'react'
 import { SelectedSuggetionCordinate } from '../../../services/reducers/DataReducer';
 import { useDispatch } from 'react-redux';
@@ -31,7 +30,7 @@ const SuggestionModal = ({ searchResult, map }) => {
                 <Box sx={{ p: 2, cursor: 'ponter' }}>
                     {searchResult?.results && searchResult?.results?.map((item, index) => (
                         <Stack direction='row' spacing={2}>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'grey' }} ><LocationSearchingIcon fontSize='small' /></Box>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'grey' }} ></Box>
                             <Box onClick={() => handleSuggestionClick(item?.lat, item?.lon)} ><Typography sx={{ mt: 1, color: 'grey', cursor: 'ponter' }} key={index}>{item?.address_line2}</Typography></Box>
                         </Stack>
                     ))}
